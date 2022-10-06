@@ -19,18 +19,37 @@ namespace PresentacionConsola
 
         public void mostrarMenu()
         {
-            String divOriginal, divACambiar;
-            Divisa d1, d2;
+            String divisa1, divisa2;
+            Divisa divOrig, divACambiar;
             double cant;
 
-            Console.WriteLine("Introduce divisa original:");
-            divOriginal = Console.ReadLine();
+            Console.WriteLine("Introduce divisa original: ");
+            divisa1 = Console.Read().ToString();
+            while (!con.Divisas.Contains(divisa1)){
+                Console.WriteLine("Divisa no registrada. Introduzca otra divisa: ");
+                divisa1 = Console.ReadLine();
+            }
+
             Console.WriteLine("Introduce divisa a cambiar:");
-            divACambiar = Console.ReadLine();
+            divisa2 = Console.Read().ToString();
+            while (!con.Divisas.Contains(divisa2)){
+                Console.WriteLine("Divisa no registrada. Introduzca otra divisa: ");
+                divisa2 = Console.ReadLine();
+            }
+
             Console.WriteLine("Cantidad a convertir:");
             cant = Console.Read();
-            Console.WriteLine("El resultado es:");
-            d1 = new Divisa(divOriginal, )
+            while (cant < 0)
+            {
+                Console.WriteLine("Cantidad no válida. Introduzca otra cantidad a convertir: ");
+                cant = Console.Read();
+            }
+
+            divOrig = con.Divisas[divisa1];
+            divACambiar = con.Divisas[divisa2];
+
+            Console.WriteLine("El resultado es:" + con.convertir(divOrig, divACambiar, cant));
+            
         }
     }
 }

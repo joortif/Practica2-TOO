@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModeloNegocio
 {
-    internal class ColeccionDivisas : KeyedCollection<string, Divisa>
+    public class ColeccionDivisas : KeyedCollection<string, Divisa>
     {
         private string nombre;
         private Divisa divisa;
@@ -24,10 +24,14 @@ namespace ModeloNegocio
             get { return divisa; } 
             set { divisa = value; }
         }
+
+
         protected override string GetKeyForItem(Divisa item)
         {
             return item.Nombre;
         }
+
+        
     }
    
 }
