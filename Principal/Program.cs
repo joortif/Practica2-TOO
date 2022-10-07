@@ -33,6 +33,8 @@ namespace Principal
             Conversor conv = new Conversor(divRef, divisas);
             Consola c = new Consola(conv);
 
+            c.mostrarMenu();
+
         }
     }
 }
