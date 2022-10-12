@@ -42,7 +42,7 @@ namespace ModeloDominio
 
         public override string ToString()
         {
-            return "Nombre: " + this.Nombre;
+            return "-" + this.Nombre;
         }
 
         

@@ -24,10 +24,10 @@ namespace PresentacionConsola
             double cant, res;
 
             //Lista de divisas
-            Console.WriteLine("Lista de divisas disponibles: ");
-            foreach(string s in this.con.NombreDiv)
+            Console.WriteLine("--Lista de divisas disponibles--");
+            foreach(Divisa d in this.con.Divisas)
             {
-                Console.WriteLine("-" + s);
+                Console.WriteLine(d.ToString());
             }
 
             //Introducción de la divisa original
