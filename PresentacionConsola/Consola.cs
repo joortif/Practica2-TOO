@@ -23,18 +23,31 @@ namespace PresentacionConsola
             Divisa divOrig, divACambiar;
             double cant, res;
 
-            Console.WriteLine("Introduce divisa original: ");
-            divisa1 = Console.ReadLine();
-            while (!con.Divisas.Contains(divisa1)){
-                Console.WriteLine("Divisa no registrada. Introduzca otra divisa: ");
-                divisa1 = Console.ReadLine();
+            //Lista de divisas
+            Console.WriteLine("Lista de divisas disponibles: ");
+            foreach(string s in this.con.NombreDiv)
+            {
+                Console.WriteLine("-" + s);
             }
 
+            //Introducción de la divisa original
+            Console.WriteLine("Introduce divisa original: ");
+            divisa1 = Console.ReadLine();
+            divOrig = new Divisa(divisa1, 0.0);
+            while (!con.ExisteDivisa(divOrig)){
+                Console.WriteLine("Divisa no registrada. Introduzca otra divisa: ");
+                divisa1 = Console.ReadLine();
+                divOrig = new Divisa(divisa1, 0.0);
+            }
+
+            //Introducción de la divisa a cambiar
             Console.WriteLine("Introduce divisa a cambiar:");
             divisa2 = Console.ReadLine();
-            while (!con.Divisas.Contains(divisa2)){
+            divACambiar = new Divisa(divisa2, 0.0);
+            while (!con.ExisteDivisa(divACambiar)){
                 Console.WriteLine("Divisa no registrada. Introduzca otra divisa: ");
                 divisa2 = Console.ReadLine();
+                divACambiar = new Divisa(divisa2, 0.0);
             }
 
             Console.WriteLine("Cantidad a convertir:");
@@ -45,9 +58,7 @@ namespace PresentacionConsola
                 cant = Convert.ToDouble(Console.ReadLine());
             }
 
-            divOrig = con.Divisas[divisa1];
-            divACambiar = con.Divisas[divisa2];
-            res = con.convertir(divOrig, divACambiar, cant);
+            res = con.Convertir(divOrig, divACambiar, cant);
 
             Console.WriteLine("El resultado es:" + res);
             Console.ReadLine();

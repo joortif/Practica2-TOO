@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModeloDominio
 {
-    public class Divisa
+    public class Divisa : IEquatable<Divisa>
     {
         private string nombre;
         private double valor;
@@ -28,6 +28,23 @@ namespace ModeloDominio
         }
 
         
+
+        public bool Equals(Divisa d)
+        {
+            if (d == null)
+            {
+                return false;
+            } else
+            {
+                return (this.Nombre.ToLower() == d.Nombre.ToLower());
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Nombre: " + this.Nombre;
+        }
+
         
     }
 }

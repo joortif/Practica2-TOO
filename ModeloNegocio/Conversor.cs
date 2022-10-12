@@ -24,6 +24,19 @@ namespace ModeloNegocio
             get { return divRef; }
             set { divRef = value; }
         }
+
+        public List<string> NombreDiv
+        {
+            get
+            {
+                List<string> l = new List<string>();
+                foreach (Divisa d in this.divisas)
+                {
+                    l.Add(d.Nombre);
+                }
+                return l;
+            }
+        }
         public Conversor(Divisa divRef, KeyedCollection<string, Divisa> divisas)
         {
             this.divRef = divRef;
@@ -36,12 +49,20 @@ namespace ModeloNegocio
         /// <param name="dDest">La divisa de destino existe en la colección de divisas</param>
         /// <param name="cant"></param>
         /// <returns></returns>
-        public double convertir(Divisa dOrig, Divisa dDest, double cant)
+        public double Convertir(Divisa dOrig, Divisa dDest, double cant)
         {
-            double cambioEnRef = cant * dOrig.Valor;
-            return (cambioEnRef / dDest.Valor);
+            double cambioEnRef = cant * divisas[dOrig.Nombre].Valor;
+            return (cambioEnRef / divisas[dDest.Nombre].Valor);
         }
-
+        /// <summary>
+        /// Devuelve cierto si la Divisa d existe en la colección de divisas y falso en otro caso.
+        /// </summary>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public bool ExisteDivisa(Divisa d)
+        {
+            return this.divisas.Contains(d.Nombre);  
+        }
 
     }
 }

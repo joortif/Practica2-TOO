@@ -16,7 +16,6 @@ namespace ModeloNegocio
         public string Nombre
         {
             get { return nombre; }
-            set { nombre = value; }
         }
 
         public Divisa Divisa
