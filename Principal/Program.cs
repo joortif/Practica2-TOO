@@ -1,6 +1,7 @@
 ﻿using ModeloDominio;
 using ModeloNegocio;
 using PresentacionConsola;
+using PresentacionWindows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,8 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Principal
 {
@@ -17,6 +20,7 @@ namespace Principal
         static void Main()
         {
             ColeccionDivisas divisas = new ColeccionDivisas();
+            
 
             //string xmlString;
             //using (var client = new WebClient())
@@ -49,9 +53,9 @@ namespace Principal
             divisas.Add(pesoarg);
 
             Conversor conv = new Conversor(divRef, divisas);
-            Consola c = new Consola(conv);
+            //Consola c = new Consola(conv);
 
-            c.mostrarMenu();
+            System.Windows.Forms.Application.Run(new FormConv(conv));
 
         }
     }
