@@ -11,7 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
+using System.Globalization;
+using System.Security.Cryptography;
 
 namespace Principal
 {
@@ -20,42 +21,51 @@ namespace Principal
         static void Main()
         {
             ColeccionDivisas divisas = new ColeccionDivisas();
+
+            //--Sin conectarse al Banco Central Europeo--
+            //Divisa divRef = new Divisa("Euro", 1);
+            //Divisa libra = new Divisa("Libra esterlina", 1.14);
+            //Divisa dolar = new Divisa("Dolar estadounidense", 1.02);
+            //Divisa franco = new Divisa("Franco suizo", 1.03);
+            //Divisa yen = new Divisa("Yen", 0.0070);
+            //Divisa pesoarg = new Divisa("Peso argentino", 0.0068);
+
+
+            //divisas.Add(divRef);
+            //divisas.Add(libra);
+            //divisas.Add(dolar);
+            //divisas.Add(franco);
+            //divisas.Add(yen);
+            //divisas.Add(pesoarg);
+
             
 
-            //string xmlString;
-            //using (var client = new WebClient())
-            //{
-            //    xmlString = client.DownloadString("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
-            //}
-
-            //var xmlDoc = new XmlDocument();
-            //xmlDoc.LoadXml(xmlString);
-
-            //foreach (XmlNode node in xmlDoc.SelectNodes("//*/Cube/@currency"))
-            //{
-            //Divisa d = new Divisa(node.Attributes["currency"].Value, Convert.ToDouble(node.Attributes["rate"].Value));
-            //divisas.Add(d);
-            // }
-
-            Divisa divRef = new Divisa("Euro", 1);
-            Divisa libra = new Divisa("Libra esterlina", 1.14);
-            Divisa dolar = new Divisa("Dolar estadounidense", 1.02);
-            Divisa franco = new Divisa("Franco suizo", 1.03);
-            Divisa yen = new Divisa("Yen", 0.0070);
-            Divisa pesoarg = new Divisa("Peso argentino", 0.0068);
-
-
+            //--Conectandose al Banco Central Europeo--
+            Divisa divRef = new Divisa("EUR", 1);
             divisas.Add(divRef);
-            divisas.Add(libra);
-            divisas.Add(dolar);
-            divisas.Add(franco);
-            divisas.Add(yen);
-            divisas.Add(pesoarg);
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
+
+            XmlNodeList nodos = doc.SelectNodes("//*[@currency]");
+
+            if (nodos != null)
+            {
+                foreach (XmlNode nodo in nodos)
+                {
+                    var div = new Divisa(nodo.Attributes["currency"].Value, Double.Parse(nodo.Attributes["rate"].Value));
+                    divisas.Add(div);
+                }
+            }
 
             Conversor conv = new Conversor(divRef, divisas);
-            //Consola c = new Consola(conv);
 
-            System.Windows.Forms.Application.Run(new FormConv(conv));
+            //--Para la versión en consola--
+            //Consola c = new Consola(conv);
+            //c.MostrarMenu();
+
+            //--Para la versión en formulario (Con interfaz gráfica)--
+            Application.Run(new FormConv(conv));
 
         }
     }

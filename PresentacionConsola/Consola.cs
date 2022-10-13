@@ -17,7 +17,7 @@ namespace PresentacionConsola
             this.con = c;
         }
 
-        public void mostrarMenu()
+        public void MostrarMenu()
         {
             String divisa1, divisa2;
             Divisa divOrig, divACambiar;
@@ -51,10 +51,9 @@ namespace PresentacionConsola
             }
 
             Console.WriteLine("Cantidad a convertir:");
-            cant = Convert.ToDouble(Console.ReadLine());
-            while (cant < 0)
+            while(!Double.TryParse(Console.ReadLine(),out cant))
             {
-                Console.WriteLine("Cantidad no válida. Introduzca otra cantidad a convertir: ");
+                Console.WriteLine("Formato no válido. Introduzca otra cantidad a convertir: ");
                 cant = Convert.ToDouble(Console.ReadLine());
             }
 

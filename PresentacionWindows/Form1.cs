@@ -78,5 +78,20 @@ namespace PresentacionWindows
         {
             Application.Exit();
         }
+
+        private void FormConv_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btVaciar_Click(object sender, EventArgs e)
+        {
+            tbCantidad.Text = null;
+        }
     }
 }
