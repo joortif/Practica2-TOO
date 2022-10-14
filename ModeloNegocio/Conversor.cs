@@ -51,8 +51,7 @@ namespace ModeloNegocio
         /// <returns></returns>
         public double Convertir(Divisa dOrig, Divisa dDest, double cant)
         {
-            double cambioEnRef = cant * divisas[dOrig.Nombre].Valor;
-            return (cambioEnRef / divisas[dDest.Nombre].Valor);
+            return (cant * divisas[dDest.Nombre].Valor) / divisas[dOrig.Nombre].Valor;
         }
         /// <summary>
         /// Devuelve cierto si la Divisa d existe en la colección de divisas y falso en otro caso.

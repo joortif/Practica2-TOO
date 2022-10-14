@@ -53,7 +53,8 @@ namespace Principal
             {
                 foreach (XmlNode nodo in nodos)
                 {
-                    var div = new Divisa(nodo.Attributes["currency"].Value, Double.Parse(nodo.Attributes["rate"].Value));
+                    string valorEnString = nodo.Attributes["rate"].Value.Replace('.', ','); //Hay que cambiar el . por la , para que consiga bien el valor del xml
+                    var div = new Divisa(nodo.Attributes["currency"].Value, Double.Parse(valorEnString));
                     divisas.Add(div);
                 }
             }

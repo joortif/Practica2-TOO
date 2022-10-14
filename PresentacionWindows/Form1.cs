@@ -93,5 +93,20 @@ namespace PresentacionWindows
         {
             tbCantidad.Text = null;
         }
+
+        private void btDivNueva_Click(object sender, EventArgs e)
+        {
+            FormDivNueva formNuevo = new FormDivNueva(this.c);
+            formNuevo.ShowDialog();
+            cbDivDest.Items.Clear();
+            cbDivOrig.Items.Clear();
+            foreach (string nom in this.c.NombreDiv)
+            {
+                cbDivDest.Items.Add(nom);
+                cbDivOrig.Items.Add(nom);
+            }
+            cbDivOrig.SelectedIndex = 0;
+            cbDivDest.SelectedIndex = 0;
+        }
     }
 }

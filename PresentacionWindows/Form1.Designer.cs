@@ -39,6 +39,7 @@
             this.btSalir = new System.Windows.Forms.Button();
             this.lbResultado = new System.Windows.Forms.Label();
             this.btVaciar = new System.Windows.Forms.Button();
+            this.btDivNueva = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbCantidad
@@ -75,7 +76,7 @@
             // btCalcular
             // 
             this.btCalcular.Location = new System.Drawing.Point(88, 233);
-            this.btCalcular.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btCalcular.Margin = new System.Windows.Forms.Padding(4);
             this.btCalcular.Name = "btCalcular";
             this.btCalcular.Size = new System.Drawing.Size(131, 39);
             this.btCalcular.TabIndex = 3;
@@ -86,7 +87,7 @@
             // tbCantidad
             // 
             this.tbCantidad.Location = new System.Drawing.Point(87, 129);
-            this.tbCantidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbCantidad.Margin = new System.Windows.Forms.Padding(4);
             this.tbCantidad.Name = "tbCantidad";
             this.tbCantidad.Size = new System.Drawing.Size(160, 22);
             this.tbCantidad.TabIndex = 4;
@@ -95,7 +96,7 @@
             // tbResultado
             // 
             this.tbResultado.Location = new System.Drawing.Point(366, 250);
-            this.tbResultado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbResultado.Margin = new System.Windows.Forms.Padding(4);
             this.tbResultado.Name = "tbResultado";
             this.tbResultado.ReadOnly = true;
             this.tbResultado.Size = new System.Drawing.Size(168, 22);
@@ -107,7 +108,7 @@
             this.cbDivOrig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDivOrig.FormattingEnabled = true;
             this.cbDivOrig.Location = new System.Drawing.Point(365, 129);
-            this.cbDivOrig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDivOrig.Margin = new System.Windows.Forms.Padding(4);
             this.cbDivOrig.Name = "cbDivOrig";
             this.cbDivOrig.Size = new System.Drawing.Size(160, 24);
             this.cbDivOrig.TabIndex = 6;
@@ -118,7 +119,7 @@
             this.cbDivDest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDivDest.FormattingEnabled = true;
             this.cbDivDest.Location = new System.Drawing.Point(661, 129);
-            this.cbDivDest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDivDest.Margin = new System.Windows.Forms.Padding(4);
             this.cbDivDest.Name = "cbDivDest";
             this.cbDivDest.Size = new System.Drawing.Size(160, 24);
             this.cbDivDest.TabIndex = 7;
@@ -126,8 +127,8 @@
             // 
             // btSalir
             // 
-            this.btSalir.Location = new System.Drawing.Point(690, 366);
-            this.btSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btSalir.Location = new System.Drawing.Point(660, 366);
+            this.btSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btSalir.Name = "btSalir";
             this.btSalir.Size = new System.Drawing.Size(131, 39);
             this.btSalir.TabIndex = 8;
@@ -155,11 +156,22 @@
             this.btVaciar.UseVisualStyleBackColor = true;
             this.btVaciar.Click += new System.EventHandler(this.btVaciar_Click);
             // 
+            // btDivNueva
+            // 
+            this.btDivNueva.Location = new System.Drawing.Point(364, 366);
+            this.btDivNueva.Name = "btDivNueva";
+            this.btDivNueva.Size = new System.Drawing.Size(129, 39);
+            this.btDivNueva.TabIndex = 11;
+            this.btDivNueva.Text = "Añadir divisa";
+            this.btDivNueva.UseVisualStyleBackColor = true;
+            this.btDivNueva.Click += new System.EventHandler(this.btDivNueva_Click);
+            // 
             // FormConv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.btDivNueva);
             this.Controls.Add(this.btVaciar);
             this.Controls.Add(this.lbResultado);
             this.Controls.Add(this.btSalir);
@@ -171,7 +183,7 @@
             this.Controls.Add(this.lbDivDest);
             this.Controls.Add(this.lbDivOrig);
             this.Controls.Add(this.lbCantidad);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormConv";
             this.Text = "Conversor";
             this.Load += new System.EventHandler(this.FormConv_Load);
@@ -193,6 +205,7 @@
         private System.Windows.Forms.Button btSalir;
         private System.Windows.Forms.Label lbResultado;
         private System.Windows.Forms.Button btVaciar;
+        private System.Windows.Forms.Button btDivNueva;
     }
 }
 
